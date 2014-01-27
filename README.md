@@ -12,11 +12,9 @@ API key](http://developer.wordnik.com/) if you haven't already. I connect to a M
 you can [specify another connection](http://datamapper.org/getting-started.html).
 
 ### Installation
-
 Install required gems:<br>
 <code>bundle install</code>
 
 ### Run
-
 Retrieve a word and save it to the database:<br>
 <code>ruby bin/word_lookup.rb</code>
