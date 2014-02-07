@@ -2,21 +2,23 @@ require 'data_mapper'
 require 'wordnik'
 require './word'
 
-DataMapper.setup(:default, 'mysql://username:password@hostname/database')
+DataMapper.setup(:default, 'mysql://root@localhost/vocab')
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
 puts "Database table 'words' has been created/updated."
 
 Wordnik.configure do |config|
-  config.api_key = 'YOUR_API_KEY_HERE'
+  config.api_key = 'f278cd45f78024aa5a70f0b33a703d3cd544c282ad84ccea1'
 end
 
 word = ''
 
-until word == '\q'
-  print 'Look up a word: '
+while word
+  puts "Look up a word:"
   word = gets.chomp
+
+  break if word == "exit"
 
   number_of_definitions = Wordnik.word.get_definitions(word).count
 
@@ -25,11 +27,13 @@ until word == '\q'
     definition += "#{n + 1}. #{Wordnik.word.get_definitions(word)[n]['text']} \n "
   end
 
+  puts "#{word}: \n #{definition}"
+
   Word.create(
     :word => word,
     :definition => definition,
     :created_at => Time.now,
   )
-
-  puts "#{word}: \n #{definition}"
 end
+
+

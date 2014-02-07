@@ -1,0 +1,17 @@
+<table>
+  <thead>
+  <tr>
+    <th>Word</th>
+    <th>Definition</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @words.each do |word| %>
+    <tr>
+      <td><%= word.word %></td>
+      <td><%= word.definition %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
