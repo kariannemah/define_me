@@ -8,3 +8,7 @@ get '/' do
   @words = Word.all(:order => [ :word.asc ])
   erb :index
 end
+
+post '/' do
+  @word = Word.new
+end

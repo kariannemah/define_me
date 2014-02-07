@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'dm-adjust'
 require 'wordnik'
 require './word'
 
@@ -22,18 +23,26 @@ while word
 
   number_of_definitions = Wordnik.word.get_definitions(word).count
 
-  definition = ''
-  (0..number_of_definitions - 1).each do |n|
-    definition += "#{n + 1}. #{Wordnik.word.get_definitions(word)[n]['text']} \n "
+  if number_of_definitions > 0
+
+    definition = ''
+    (0..number_of_definitions - 1).each do |n|
+      definition += "#{n + 1}. #{Wordnik.word.get_definitions(word)[n]['text']} \n "
+    end
+
+    if Word.all(:word => word).count == 0
+      Word.create(
+        :word => word,
+        :definition => definition,
+        :created_at => Time.now,
+        :counter => 1,
+      )
+    else
+      old_word = Word.all(:word => word)
+      old_word.adjust!(:counter => +1)
+    end
+
+    puts "#{word}: \n #{definition}"
   end
-
-  puts "#{word}: \n #{definition}"
-
-  Word.create(
-    :word => word,
-    :definition => definition,
-    :created_at => Time.now,
-  )
 end
-
 

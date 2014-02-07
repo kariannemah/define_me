@@ -5,4 +5,5 @@ class Word
   property :word,       String
   property :definition, Text
   property :created_at, DateTime
+  property :counter,    Integer
 end
