@@ -3,6 +3,8 @@ require 'dm-adjust'
 require 'wordnik'
 require './word'
 
+# You'll need to create and/or specify a database from the MySQL command line
+# before running this script.
 DataMapper.setup(:default, 'mysql://root@localhost/vocab')
 DataMapper.finalize
 DataMapper.auto_upgrade!
