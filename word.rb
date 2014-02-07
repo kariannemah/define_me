@@ -4,6 +4,6 @@ class Word
   property :id,         Serial
   property :word,       String
   property :definition, Text
-  property :created_at, DateTime
   property :counter,    Integer
+  property :created_at, DateTime
 end
