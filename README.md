@@ -16,6 +16,9 @@ Running the accompanying [Sinatra app] (http://www.sinatrarb.com/), you'll be ab
 Install required gems:<br>
 <code>bundle install</code>
 
+Make lookup_word an executable:<br>
+<code> chmod +x bin/lookup_word
+
 ### Run
 Retrieve a word and save it to the database:<br>
 <code>bin/lookup_word</code>
