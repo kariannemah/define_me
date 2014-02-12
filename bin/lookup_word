@@ -1,7 +1,9 @@
+#!/usr/bin/env ruby
+
 require 'data_mapper'
 require 'dm-adjust'
 require 'wordnik'
-require './word'
+require_relative '../word'
 
 # You'll need to create and/or specify a database from the MySQL command line
 # before running this script.
@@ -18,18 +20,19 @@ end
 word = ''
 
 while word
-  puts "Look up a word:"
+  print "Look up a word: "
   word = gets.chomp
 
   break if word == "exit"
 
-  number_of_definitions = Wordnik.word.get_definitions(word).count
+  result = Wordnik.word.get_definitions(word)
+  number_of_definitions = result.count
 
   if number_of_definitions > 0
 
     definition = ''
-    (0..number_of_definitions - 1).each do |n|
-      definition += "#{n + 1}. #{Wordnik.word.get_definitions(word)[n]['text']} \n "
+    result.each.with_index do |definition_hash, index|
+      definition += "#{index + 1}. #{definition_hash['text']}"
     end
 
     if Word.all(:word => word).count == 0

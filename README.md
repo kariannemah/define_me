@@ -18,7 +18,7 @@ Install required gems:<br>
 
 ### Run
 Retrieve a word and save it to the database:<br>
-<code>ruby lookup_word.rb</code>
+<code>bin/lookup_word</code>
 
 Fire up the Sinatra app: <br>
 <code>ruby see_list.rb</code>
