@@ -53,3 +53,15 @@ post '/' do
     redirect '/'
   end
 end
+
+delete '/' do
+  # delete a word
+  # add a delete link to each word
+  @word = Word.first(:word => params[:word])
+  # if deletion works, reload index, if not, reload word view
+  if @word.delete
+    redirect "/word/#{@word.id}"
+  else
+    redirect '/'
+  end
+end
