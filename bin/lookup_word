@@ -14,7 +14,7 @@ DataMapper.auto_upgrade!
 puts "Database table 'words' has been created/updated."
 
 Wordnik.configure do |config|
-  config.api_key = 'f278cd45f78024aa5a70f0b33a703d3cd544c282ad84ccea1'
+  config.api_key = 'YOUR_API_KEY_HERE'
 end
 
 word = ''
@@ -47,7 +47,9 @@ while word
       old_word.adjust!(:counter => +1)
     end
 
+    # separate formatting from logic of composing the definition object
     puts "#{word}: \n #{definition}"
   end
 end
+
 
