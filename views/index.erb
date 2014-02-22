@@ -1,24 +1,24 @@
 <link href="/css/table.css" rel="stylesheet" type="text/css">
 <body>
-<table class = "flat-table flat-table-1">
-  <thead>
-  <tr>
-    <th>Word</th>
-    <th>Definition</th>
-    <th>Most Recent Lookup Date</th>
-    <th># of Lookups</th>
-  </tr>
-  </thead>
+  <table cellspacing="0">
+    <thead>
+      <tr>
+        <th>Word</th>
+        <th>Definition</th>
+        <th>Most Recent Lookup Date</th>
+        <th># of Lookups</th>
+      </tr>
+     </thead>
 
-  <tbody>
-  <% @words.each do |word| %>
-    <tr>
-      <td><%= word.word %></td>
-      <td><%= word.definition %></td>
-      <td><%= word.created_at.strftime("%m/%d/%Y") %></td>
-      <td><%= word.counter %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+    <tbody>
+      <% @words.each do |word| %>
+        <tr>
+          <td><%= word.word %></td>
+          <td><%= word.definition %></td>
+          <td><%= word.created_at.strftime("%m/%d/%Y") %></td>
+          <td><%= word.counter %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </body>

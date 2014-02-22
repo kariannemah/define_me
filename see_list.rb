@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'data_mapper'
 require './word'
+require 'data_mapper'
+require 'dm-adjust'
+require 'wordnik'
 
 DataMapper.setup(:default, 'mysql://root@localhost/vocab')
 
@@ -9,6 +12,16 @@ get '/' do
   erb :index
 end
 
-post '/' do
-  @word = Word.new
+# see all words
+get '/words' do
+  @words = Word.all
+  erb :index
 end
+
+#view a word
+get '/word/:id' do
+  @word = Word.get(params[:id])
+  erb :word
+end
+
+DataMapper.auto_upgrade!
