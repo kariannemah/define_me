@@ -1,24 +1,26 @@
 <link href="/css/table.css" rel="stylesheet" type="text/css">
-<body>
-  <table cellspacing="0">
-    <thead>
-      <tr>
-        <th>Word</th>
-        <th>Definition</th>
-        <th>Most Recent Lookup Date</th>
-        <th># of Lookups</th>
-      </tr>
-     </thead>
 
-    <tbody>
-      <% @words.each do |word| %>
-        <tr>
-          <td><%= word.word %></td>
-          <td><%= word.definition %></td>
-          <td><%= word.created_at.strftime("%m/%d/%Y") %></td>
-          <td><%= word.counter %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<body>
+<label for="word_search">Filter:</label> <input type="text" id="word_search" value=""/>
+<table id="my-table" style="border-collapse:collapse">
+  <thead>
+  <tr>
+    <th>Word</th>
+    <th>Definition</th>
+    <th>Most Recent Lookup Date</th>
+    <th># of Lookups</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @words.each do |word| %>
+    <tr>
+      <td><%= word.word %></td>
+      <td><%= word.definition %></td>
+      <td><%= word.created_at.strftime('%m/%d/%Y') %></td>
+      <td><%= word.counter %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 </body>
