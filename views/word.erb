@@ -1,0 +1,23 @@
+<link href="/css/table.css" rel="stylesheet" type="text/css">
+<table cellspacing="0">
+  <thead>
+  <tr>
+    <th>Word</th>
+    <th>Definition</th>
+    <th>Most Recent Lookup Date</th>
+    <th># of Lookups</th>
+  </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @word.word %></td>
+      <td><%= @word.definition %></td>
+      <td><%= @word.created_at.strftime('%m/%d/%Y') %></td>
+      <td><%= @word.counter %></td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="/new">Look up another word</a><br>
+<a href="/">See all words</a>

@@ -1,20 +1,17 @@
 require 'sinatra'
 require 'data_mapper'
 require './word'
-require 'data_mapper'
 require 'dm-adjust'
+require 'dm-aggregates'
 require 'wordnik'
 
 DataMapper.setup(:default, 'mysql://root@localhost/vocab')
 
+DataMapper.finalize
+DataMapper.auto_upgrade!
+
 get '/' do
   @words = Word.all(:order => [ :word.asc ])
-  erb :index
-end
-
-# see all words
-get '/words' do
-  @words = Word.all
   erb :index
 end
 
@@ -24,4 +21,35 @@ get '/word/:id' do
   erb :word
 end
 
-DataMapper.auto_upgrade!
+post '/' do
+  if Word.all(:word => params[:word]).count != 0
+
+    @word = Word.first(:word => params[:word])
+    @word.adjust!(:counter => +1)
+  else
+    @word = Word.new
+      Wordnik.configure do |config|
+        config.api_key = 'f278cd45f78024aa5a70f0b33a703d3cd544c282ad84ccea1'
+      end
+
+      result = Wordnik.word.get_definitions(params[:word])
+      number_of_definitions = result.count
+
+      if number_of_definitions > 0
+        definition = ''
+        result.each.with_index do |definition_hash, index|
+          definition += "#{index + 1}. #{definition_hash['text']} "
+        end
+        @word.word = params[:word]
+        @word.definition = definition
+        @word.created_at = Time.now
+        @word.counter = 1
+      end
+  end
+
+  if @word.save
+    redirect "/word/#{@word.id}"
+  else
+    redirect '/'
+  end
+end

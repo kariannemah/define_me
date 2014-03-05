@@ -10,7 +10,7 @@ Define Me looks up a word with [Wordnik](https://www.wordnik.com/) and store its
 API key](http://developer.wordnik.com/) if you haven't already. I connect to a MySQL server, but
 you can [specify another connection](http://datamapper.org/getting-started.html).
 
-Running the accompanying [Sinatra app] (http://www.sinatrarb.com/), you'll be able to see your list of words in the browser of your choice.
+Running the accompanying [Sinatra app](http://www.sinatrarb.com/), you'll be able to see your list of words in the browser of your choice.
 
 ### Installation
 Install required gems:<br>
@@ -20,11 +20,12 @@ Make lookup_word an executable:<br>
 <code> chmod +x bin/lookup_word
 
 ### Run
-Retrieve a word and save it to the database:<br>
+From the command line, look up a word and save its definition to the database:<br>
 <code>bin/lookup_word</code>
 
-Fire up the Sinatra app: <br>
+Or fire up the Sinatra app and look up a word from [the browser](http://localhost:4567/): <br>
 <code>ruby see_list.rb</code>
 
-Then point your browser to [http://localhost:4567/](http://localhost:4567/) to see your words!
+If you're like me, you'll end up with a long list, but you can filter by word to easily retrieve its definition.
+
 
