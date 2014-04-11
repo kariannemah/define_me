@@ -17,7 +17,7 @@ Install required gems:<br>
 <code>bundle install</code>
 
 Make lookup_word an executable:<br>
-<code> chmod +x bin/lookup_word
+<code>chmod +x bin/lookup_word
 
 ### Run
 From the command line, look up a word and save its definition to the database:<br>
