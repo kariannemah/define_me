@@ -16,7 +16,7 @@ Running the accompanying [Sinatra app](http://www.sinatrarb.com/), you'll be abl
 Install required gems:<br>
 <code>bundle install</code>
 
-Make lookup_word an executable:<br>
+Convert the file bin/lookup_word to an executable:<br>
 <code>chmod +x bin/lookup_word
 
 ### Run
