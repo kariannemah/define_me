@@ -29,7 +29,7 @@ post '/' do
   else
     @word = Word.new
       Wordnik.configure do |config|
-        config.api_key = YOUR_WORDNIK_API_KEY_HERE
+        config.api_key = 'YOUR_WORDNIK_API_KEY_HERE'
       end
 
       result = Wordnik.word.get_definitions(params[:word])
