@@ -26,6 +26,6 @@ From the command line, look up a word and save its definition to the database:<b
 Or fire up the Sinatra app and look up a word from [the browser](http://localhost:4567/): <br>
 <code>ruby see_list.rb</code>
 
-If you're like me, you'll end up with a long list, but you can filter by word to easily retrieve its definition.
+If you're like me, you'll end up with a long list, but you can filter by word to easily retrieve a definition.
 
 
