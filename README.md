@@ -14,17 +14,17 @@ Running the accompanying [Sinatra app](http://www.sinatrarb.com/), you'll be abl
 
 ### Installation
 Install required gems:<br>
-<code>bundle install</code>
+`bundle install`
 
 Convert the file bin/lookup_word to an executable:<br>
-<code>chmod +x bin/lookup_word
+`chmod +x bin/lookup_word`
 
 ### Run
 From the command line, look up a word and save its definition to the database:<br>
-<code>bin/lookup_word</code>
+`bin/lookup_word`
 
 Or fire up the Sinatra app and look up a word from [the browser](http://localhost:4567/): <br>
-<code>ruby see_list.rb</code>
+`ruby see_list.rb`
 
 If you're like me, you'll end up with a long list, but you can filter by word to easily retrieve a definition.
 
